@@ -1,0 +1,14 @@
+  - name: Cron schedule
+  # You may pin to the exact commit or the version.
+  # uses: gr2m/set-cron-schedule-action@91be4dc4fc0f57971bbde0ca84c57e44d8b3cd25
+  uses: gr2m/set-cron-schedule-action@v2.0.2
+  with:
+    # Personal access token with "workflow" scope
+    token: 
+    # cron schedule expression (UTC Timezone). Set multiple schedules by separating by line breaks
+    cron: 
+    "06***"
+    workflow: # optional
+    # Commit message. You can use $WORKFLOW_NAME and $CRON_SCHEDULE placeholders. Defaults to "ci($WORKFLOW_NAME): update cron schedule: $CRON_EXPRESSIONS"
+    message: "Cron gestartet"
+          
