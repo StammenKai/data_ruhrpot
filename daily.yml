@@ -1,0 +1,85 @@
+name: Castrop-Rauxel Tägliche Datensammlung
+
+on:
+  schedule:
+    # Jeden Tag um 06:00 Uhr UTC (= 07:00 / 08:00 MEZ/MESZ)
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Manueller Start möglich
+
+jobs:
+  collect-and-analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Abhängigkeiten installieren
+        run: |
+          pip install requests beautifulsoup4 gspread google-auth pandas \
+                      matplotlib seaborn jinja2 pytrends anthropic python-dotenv \
+                      selenium webdriver-manager
+
+      - name: Daten sammeln (OSM + Events)
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_PATH: credentials.json
+        run: python collector.py
+
+      - name: Credentials für Sheets schreiben (falls vorhanden)
+        if: env.GOOGLE_CREDENTIALS != ''
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+        run: echo "$GOOGLE_CREDENTIALS" > credentials.json
+
+      - name: Google Trends & Affiliate-Analyse
+        run: python trends_affiliate.py
+
+      - name: Ads Intelligence & SEO Keywords
+        run: python ads_intelligence.py
+
+      - name: KI Artikel generieren & in WordPress veröffentlichen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+        run: python ki_content.py
+
+      - name: Social Media veröffentlichen (Instagram & Facebook)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_IG_ACCOUNT_ID: ${{ secrets.META_IG_ACCOUNT_ID }}
+          META_FB_PAGE_ID: ${{ secrets.META_FB_PAGE_ID }}
+          META_FB_PAGE_TOKEN: ${{ secrets.META_FB_PAGE_TOKEN }}
+          WP_URL: ${{ secrets.WP_URL }}
+          DEFAULT_SOCIAL_IMAGE: ${{ secrets.DEFAULT_SOCIAL_IMAGE }}
+        run: python social_publisher.py
+
+      - name: Trend-Analyse & Dashboard generieren
+        run: python analyse.py
+
+      - name: Daten & Reports committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/ reports/
+          git diff --staged --quiet || git commit -m "📊 Tägliches Update $(date +%Y-%m-%d)"
+          git push
+
+      - name: Artifacts hochladen (alternativ zu Git)
+        uses: actions/upload-artifact@v4
+        with:
+          name: castrop-rauxel-${{ github.run_number }}
+          path: |
+            output/
+            reports/
+          retention-days: 30
