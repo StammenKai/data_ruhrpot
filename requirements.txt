@@ -1,0 +1,39 @@
+# RuhrFinds / StammenMedia – Python Abhängigkeiten
+# Installiert via: pip install -r requirements.txt
+
+# ── Datensammlung ─────────────────────────────────
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.1.0
+
+# ── Datenverarbeitung ─────────────────────────────
+pandas==2.2.1
+numpy==1.26.4
+
+# ── Visualisierung ────────────────────────────────
+matplotlib==3.8.3
+seaborn==0.13.2
+
+# ── Google Trends ─────────────────────────────────
+pytrends==4.9.2
+
+# ── KI / APIs ─────────────────────────────────────
+anthropic==0.21.3
+openai==1.14.3
+
+# ── WordPress & Social Media ──────────────────────
+python-dotenv==1.0.1
+
+# ── Google Sheets (optional) ──────────────────────
+gspread==6.0.2
+google-auth==2.28.2
+
+# ── Browser Automation (Ads Intelligence) ─────────
+selenium==4.18.1
+webdriver-manager==4.0.1
+
+# ── Bildverarbeitung ──────────────────────────────
+pillow==10.2.0
+
+# ── Templates ─────────────────────────────────────
+jinja2==3.1.3
