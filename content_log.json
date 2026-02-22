@@ -9,5 +9,16 @@
     "wp_url": "https://ruhrfinds.de/?p=23",
     "wp_status": "draft",
     "lokal": null
+  },
+  {
+    "datum": "2026-02-22",
+    "titel": "Familie & Kinder – Tipps für das Ruhrgebiet",
+    "gruppe": "Familie & Kinder",
+    "wortanzahl": 1295,
+    "tokens": 4000,
+    "wp_id": 32,
+    "wp_url": "https://ruhrfinds.de/?p=32",
+    "wp_status": "draft",
+    "lokal": null
   }
 ]

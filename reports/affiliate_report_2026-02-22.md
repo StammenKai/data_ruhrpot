@@ -6,17 +6,17 @@ Region: Nordrhein-Westfalen (Fokus: Castrop-Rauxel)
 ## 🏆 TOP CHANCEN DIESE WOCHE
 
 🥇 **Familie & Kinder** (Score: 67/100)
-   Trend: steigend ↑ | Veränderung: +5.2%
+   Trend: steigend ↑ | Veränderung: +5.7%
    Keywords: Kinderfahrrad, Spielzeug kaufen, Kinderwagen, Schulranzen, Babyausstattung
    Empfohlene Partner: Amazon, myToys, baby-walz, Jako-o
 
 🥈 **Mode & Lifestyle** (Score: 62/100)
-   Trend: steigend ↑ | Veränderung: +20.5%
+   Trend: steigend ↑ | Veränderung: +21.0%
    Keywords: Winterjacke kaufen, Sneaker, Kleidung online, Handtasche, Schmuck
    Empfohlene Partner: Zalando, AboutYou, Amazon, Otto
 
-🥉 **Fahrrad & Outdoor** (Score: 52/100)
-   Trend: steigend ↑ | Veränderung: +27.1%
+🥉 **Fahrrad & Outdoor** (Score: 53/100)
+   Trend: steigend ↑ | Veränderung: +31.9%
    Keywords: Fahrrad kaufen, E-Bike, Fahrradreparatur, Camping, Wanderschuhe
    Empfohlene Partner: Decathlon, Amazon, Fahrrad.de, Bergfreunde
 
@@ -33,12 +33,12 @@ Saison: **Winter** – passende Artikel:
 ## 📋 ALLE KATEGORIEN IM ÜBERBLICK
 
               gruppe      trend  affiliate_score                               empfohlene_partner
-    Familie & Kinder steigend ↑             66.7                Amazon, myToys, baby-walz, Jako-o
-    Mode & Lifestyle steigend ↑             62.0                  Zalando, AboutYou, Amazon, Otto
-   Fahrrad & Outdoor steigend ↑             52.2       Decathlon, Amazon, Fahrrad.de, Bergfreunde
- Heimwerken & Garten steigend ↑             51.0                   OBI, Hornbach, Amazon, Bauhaus
-Elektronik & Technik   stabil →             50.2 MediaMarkt, Amazon, Alternate, Notebooksbilliger
-Gesundheit & Fitness   stabil →             38.7          Myprotein, Amazon, SportScheck, Gymondo
+    Familie & Kinder steigend ↑             67.2                Amazon, myToys, baby-walz, Jako-o
+    Mode & Lifestyle steigend ↑             62.2                  Zalando, AboutYou, Amazon, Otto
+   Fahrrad & Outdoor steigend ↑             52.6       Decathlon, Amazon, Fahrrad.de, Bergfreunde
+ Heimwerken & Garten steigend ↑             50.9                   OBI, Hornbach, Amazon, Bauhaus
+Elektronik & Technik   stabil →             50.8 MediaMarkt, Amazon, Alternate, Notebooksbilliger
+Gesundheit & Fitness   stabil →             37.5          Myprotein, Amazon, SportScheck, Gymondo
 
 
 ## 🛠 NÄCHSTE SCHRITTE
