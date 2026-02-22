@@ -27,14 +27,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Google Credentials schreiben
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
         run: |
-          if [ -n "$GOOGLE_CREDENTIALS" ]; then
-            echo "$GOOGLE_CREDENTIALS" > credentials.json
+          if [ -n "${{ secrets.GOOGLE_CREDENTIALS_JSON }}" ]; then
+            echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credentials.json
             echo "✓ credentials.json erstellt"
           else
-            echo "⚠ Kein Google Credentials Secret – überspringe"
+            echo "⚠ Kein GOOGLE_CREDENTIALS_JSON Secret – Sheets werden übersprungen"
           fi
 
       - name: OSM & Events sammeln
