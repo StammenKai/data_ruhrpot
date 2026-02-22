@@ -207,11 +207,6 @@ def generate_article(opportunity: dict) -> dict:
     # httpx-Versionskonflikt umgehen: eigenen httpx Client ohne 'proxies' übergeben
     try:
         import httpx
-        http_client = httpx.Client()
-        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=http_client)
-    except Exception:
-        try:
-        import httpx
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=httpx.Client())
     except Exception:
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
