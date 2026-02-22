@@ -19,6 +19,7 @@ import requests
 import json
 import csv
 import os
+import time
 import logging
 from datetime import datetime, date
 from bs4 import BeautifulSoup
@@ -63,8 +64,7 @@ OSM_TAGS = {
 def fetch_osm_data_all() -> dict:
     """
     Holt ALLE Tags in einer einzigen Overpass-Anfrage.
-    Vorher: 4 separate Anfragen → 429 Rate-Limit
-    Jetzt:  1 kombinierte Anfrage → kein Rate-Limit
+    Bei Timeout (504) wird bis zu 3x mit Wartezeit wiederholt.
     """
     tag_union = "\n      ".join([
         f"node(area.a)[{tag}]; way(area.a)[{tag}];"
@@ -78,21 +78,28 @@ def fetch_osm_data_all() -> dict:
     );
     out center tags;
     """
-    try:
-        log.info("OSM: Starte kombinierte Abfrage (alle Tags in einer Anfrage)...")
-        response = requests.post(
-            OSM_OVERPASS_URL,
-            data={"data": query},
-            timeout=90,
-            headers={"User-Agent": "RuhrFinds-DataBot/1.0 (research; contact@ruhrfinds.de)"}
-        )
-        response.raise_for_status()
-        elements = response.json().get("elements", [])
-        log.info(f"OSM: {len(elements)} Einträge gesamt gefunden")
-        return elements
-    except Exception as e:
-        log.error(f"OSM Fehler: {e}")
-        return []
+    for versuch in range(1, 4):  # Max 3 Versuche
+        try:
+            log.info(f"OSM: Abfrage Versuch {versuch}/3...")
+            response = requests.post(
+                OSM_OVERPASS_URL,
+                data={"data": query},
+                timeout=90,
+                headers={"User-Agent": "RuhrFinds-DataBot/1.0 (research; contact@ruhrfinds.de)"}
+            )
+            response.raise_for_status()
+            elements = response.json().get("elements", [])
+            log.info(f"OSM: {len(elements)} Einträge gefunden")
+            return elements
+        except Exception as e:
+            log.warning(f"OSM Versuch {versuch} fehlgeschlagen: {e}")
+            if versuch < 3:
+                wartezeit = versuch * 30  # 30s, 60s
+                log.info(f"Warte {wartezeit}s vor nächstem Versuch...")
+                time.sleep(wartezeit)
+
+    log.error("OSM: Alle 3 Versuche fehlgeschlagen – überspringe OSM-Daten")
+    return []
 
 
 def classify_element(el: dict) -> str:
@@ -131,15 +138,35 @@ def parse_osm_elements(elements: list) -> list[dict]:
 
 
 def collect_osm() -> pd.DataFrame:
+    """OSM-Daten sammeln mit automatischem Retry bei Timeout."""
     import time
-    # Kurz warten damit vorherige Requests abgeklungen sind
-    time.sleep(5)
-    elements = fetch_osm_data_all()
-    all_rows = parse_osm_elements(elements)
 
-    # Kategorie-Statistik loggen
-    df = pd.DataFrame(all_rows)
-    if not df.empty:
+    # Leerer DataFrame mit korrekten Spalten als Fallback
+    empty_df = pd.DataFrame(columns=[
+        "datum","kategorie","name","typ","strasse","hausnummer",
+        "plz","ort","lat","lon","oeffnungszeiten","website","osm_id","osm_typ"
+    ])
+
+    elements = []
+    for versuch in range(1, 4):  # Max 3 Versuche
+        log.info(f"OSM: Versuch {versuch}/3 – warte kurz vor Anfrage...")
+        time.sleep(10 * versuch)  # 10s, 20s, 30s zwischen Versuchen
+        elements = fetch_osm_data_all()
+        if elements:
+            break
+        log.warning(f"OSM: Versuch {versuch} fehlgeschlagen – versuche erneut...")
+
+    if not elements:
+        log.error("OSM: Alle Versuche fehlgeschlagen – speichere leere CSV")
+        path = f"{OUTPUT_DIR}/osm_{today}.csv"
+        empty_df.to_csv(path, index=False, encoding="utf-8-sig")
+        log.info(f"OSM Daten gespeichert: {path} (0 Einträge)")
+        return empty_df
+
+    all_rows = parse_osm_elements(elements)
+    df = pd.DataFrame(all_rows) if all_rows else empty_df
+
+    if not df.empty and "kategorie" in df.columns:
         for cat, count in df["kategorie"].value_counts().items():
             log.info(f"  OSM [{cat}]: {count} Einträge")
 
@@ -286,14 +313,22 @@ def upload_to_sheets(df: pd.DataFrame, sheet_name: str):
 # ── 5. Zusammenfassung & Statistiken ────────────────────────────────────────
 
 def generate_summary(df_osm: pd.DataFrame, df_events: pd.DataFrame, df_pop: pd.DataFrame):
+    bev = df_pop[df_pop["jahr"] == 2023]["bevoelkerung"].values
+
+    # Sicher gegen leeren DataFrame – prüfe ob Spalte existiert
+    def count_kategorie(df, name):
+        if df.empty or "kategorie" not in df.columns:
+            return 0
+        return int(len(df[df["kategorie"] == name]))
+
     summary = {
-        "datum": today,
-        "osm_gesamt": len(df_osm),
-        "osm_laeden": len(df_osm[df_osm["kategorie"] == "Laden/Geschäft"]),
-        "osm_gastronomie": len(df_osm[df_osm["kategorie"] == "Gastronomie/Service"]),
-        "osm_freizeit": len(df_osm[df_osm["kategorie"] == "Freizeit"]),
-        "events_gesamt": len(df_events),
-       "bevoelkerung_aktuell": int(df_pop[df_pop["jahr"] == 2023]["bevoelkerung"].values[0]) if not df_pop.empty else 0,
+        "datum":                today,
+        "osm_gesamt":           int(len(df_osm)),
+        "osm_laeden":           count_kategorie(df_osm, "Laden/Geschäft"),
+        "osm_gastronomie":      count_kategorie(df_osm, "Gastronomie/Service"),
+        "osm_freizeit":         count_kategorie(df_osm, "Freizeit"),
+        "events_gesamt":        int(len(df_events)),
+        "bevoelkerung_aktuell": int(bev[0]) if len(bev) > 0 else 0,
     }
 
     path = f"{OUTPUT_DIR}/summary_{today}.json"
