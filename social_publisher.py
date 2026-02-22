@@ -160,7 +160,12 @@ def generate_captions(article: dict) -> dict:
         print("⚠ Kein API-Key – nutze Demo-Captions")
         return _demo_captions(article)
 
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    try:
+        import httpx
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=httpx.Client())
+    except Exception:
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
     gruppe = article.get("gruppe", "Fahrrad & Outdoor")
     hashtags = _select_hashtags(gruppe)
 

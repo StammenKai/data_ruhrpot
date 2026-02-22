@@ -129,7 +129,11 @@ def generate_image_prompt(article: dict) -> dict:
         }
 
     import anthropic
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    try:
+        import httpx
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=httpx.Client())
+    except Exception:
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     monat = __import__("datetime").datetime.now().month
     jahreszeit = (

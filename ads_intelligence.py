@@ -354,7 +354,11 @@ def ai_analyze_keywords(raw_data: dict) -> dict:
         return _demo_analysis()
 
     print("\n🤖 KI-Analyse startet...")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    try:
+        import httpx
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=httpx.Client())
+    except Exception:
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     # Daten komprimieren für den Prompt
     ads_summary = "\n".join([
