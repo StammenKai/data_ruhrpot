@@ -178,63 +178,142 @@ def collect_osm() -> pd.DataFrame:
 
 # ── 2. Veranstaltungs-Scraper ────────────────────────────────────────────────
 
-def scrape_events() -> list[dict]:
-    """Scrapt Veranstaltungen von der offiziellen Stadtwebsite."""
-    events = []
+# Mehrere Quellen – wenn eine ausfällt springen die anderen ein
+EVENT_SOURCES = [
+    {
+        "name":     "Stadt Castrop-Rauxel Kalender",
+        "url":      "https://www.castrop-rauxel.de/veranstaltungskalender",
+        "selectors": [
+            ".event-list-item", ".veranstaltung-item",
+            "article.event", ".tx-cal-controller .vevent",
+            ".event", "[class*='event']",
+        ],
+    },
+    {
+        "name":     "Regioactive Stadthalle",
+        "url":      "https://www.regioactive.de/location/castrop-rauxel/stadthalle-castrop-rauxel-Lt8Cf0bDY7.html",
+        "selectors": [
+            ".event-item", ".concert-item", "article",
+            ".list-item", "[class*='event']",
+        ],
+    },
+    {
+        "name":     "Eventforum Castrop",
+        "url":      "https://eventforum-castrop.de/veranstaltungen",
+        "selectors": [
+            ".event", ".veranstaltung", "article",
+            ".wp-block-post", ".tribe-event",
+        ],
+    },
+]
+
+
+def scrape_source(source: dict) -> list[dict]:
+    """Scrapt Events von einer einzelnen Quelle."""
+    events  = []
+    headers = {
+        "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept-Language": "de-DE,de;q=0.9",
+        "Accept":          "text/html,application/xhtml+xml",
+    }
+
     try:
-        headers = {"User-Agent": "Mozilla/5.0 (research bot; contact@example.com)"}
-        resp = requests.get(EVENTS_URL, headers=headers, timeout=15)
+        resp = requests.get(source["url"], headers=headers, timeout=15)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        # Generischer Ansatz – passt sich an gängige CMS-Strukturen an
-        # Versuche mehrere typische Selektoren
-        candidates = (
-            soup.select("article.event")
-            or soup.select(".event-item")
-            or soup.select(".veranstaltung")
-            or soup.select("li.event")
-            or soup.select(".tx-cal-event")  # TYPO3 Kalender
-        )
+        # Selektoren der Reihe nach versuchen
+        candidates = []
+        for selector in source["selectors"]:
+            candidates = soup.select(selector)
+            if candidates:
+                log.info(f"  [{source['name']}] Selektor '{selector}': {len(candidates)} Treffer")
+                break
 
         if not candidates:
-            log.warning("Kein bekanntes Event-Markup gefunden – rohe Links werden extrahiert")
-            # Fallback: alle Links mit Datum-ähnlichen Texten
-            for a in soup.find_all("a", href=True):
-                text = a.get_text(strip=True)
-                if len(text) > 10:
-                    events.append({
-                        "datum_abruf": today,
-                        "titel": text[:200],
-                        "datum_event": "",
-                        "ort": "",
-                        "beschreibung": "",
-                        "link": a["href"],
-                        "quelle": EVENTS_URL,
-                    })
-        else:
-            for item in candidates:
-                title_el = item.find(["h2", "h3", "h4", ".title", ".event-title"])
-                date_el = item.find(["time", ".date", ".event-date"])
-                loc_el = item.find([".location", ".ort", ".venue"])
-                desc_el = item.find(["p", ".description", ".teaser"])
-                link_el = item.find("a", href=True)
+            # Fallback: alle <article> oder <li> mit Textinhalt
+            candidates = soup.find_all(["article", "li"], limit=50)
+            candidates = [c for c in candidates if len(c.get_text(strip=True)) > 30]
+            log.info(f"  [{source['name']}] Fallback auf article/li: {len(candidates)} Treffer")
 
-                events.append({
-                    "datum_abruf": today,
-                    "titel": title_el.get_text(strip=True) if title_el else "–",
-                    "datum_event": date_el.get("datetime", date_el.get_text(strip=True) if date_el else ""),
-                    "ort": loc_el.get_text(strip=True) if loc_el else "",
-                    "beschreibung": desc_el.get_text(strip=True)[:300] if desc_el else "",
-                    "link": link_el["href"] if link_el else "",
-                    "quelle": EVENTS_URL,
-                })
+        for item in candidates[:30]:
+            # Titel extrahieren
+            title_el = (
+                item.find(["h2", "h3", "h4"]) or
+                item.find(class_=lambda c: c and any(x in c for x in ["title","titel","name","heading"]))
+            )
+            # Datum extrahieren
+            date_el = (
+                item.find("time") or
+                item.find(class_=lambda c: c and any(x in c for x in ["date","datum","zeit","time"]))
+            )
+            # Ort extrahieren
+            loc_el = item.find(class_=lambda c: c and any(x in c for x in ["location","ort","venue","place"]))
+            # Link extrahieren
+            link_el = item.find("a", href=True)
 
-        log.info(f"Events: {len(events)} Einträge gescrapt")
+            titel = (title_el.get_text(strip=True) if title_el else item.get_text(strip=True)[:80]).strip()
+            if not titel or len(titel) < 5:
+                continue
+
+            datum = ""
+            if date_el:
+                datum = date_el.get("datetime", "") or date_el.get_text(strip=True)[:30]
+
+            link = ""
+            if link_el:
+                href = link_el["href"]
+                # Relative URLs zu absoluten machen
+                if href.startswith("/"):
+                    from urllib.parse import urlparse
+                    base = urlparse(source["url"])
+                    link = f"{base.scheme}://{base.netloc}{href}"
+                elif href.startswith("http"):
+                    link = href
+
+            events.append({
+                "datum_abruf": today,
+                "titel":       titel[:200],
+                "datum_event": datum,
+                "ort":         loc_el.get_text(strip=True)[:100] if loc_el else "Castrop-Rauxel",
+                "beschreibung": "",
+                "link":        link,
+                "quelle":      source["name"],
+            })
+
+        log.info(f"  [{source['name']}]: {len(events)} Events extrahiert")
+
+    except requests.exceptions.Timeout:
+        log.warning(f"  [{source['name']}]: Timeout – überspringe")
+    except requests.exceptions.HTTPError as e:
+        log.warning(f"  [{source['name']}]: HTTP {e.response.status_code} – überspringe")
     except Exception as e:
-        log.error(f"Event-Scraping Fehler: {e}")
+        log.warning(f"  [{source['name']}]: Fehler – {e}")
 
     return events
+
+
+def scrape_events() -> list[dict]:
+    """Scrapt Veranstaltungen aus allen konfigurierten Quellen."""
+    all_events = []
+
+    for source in EVENT_SOURCES:
+        log.info(f"Scrape Events: {source['name']}...")
+        events = scrape_source(source)
+        all_events.extend(events)
+        time.sleep(2)  # Höfliche Pause zwischen Quellen
+
+    # Duplikate entfernen (gleicher Titel)
+    seen   = set()
+    unique = []
+    for e in all_events:
+        key = e["titel"].lower()[:50]
+        if key not in seen:
+            seen.add(key)
+            unique.append(e)
+
+    log.info(f"Events gesamt: {len(unique)} eindeutige Einträge aus {len(EVENT_SOURCES)} Quellen")
+    return unique
 
 
 def collect_events() -> pd.DataFrame:

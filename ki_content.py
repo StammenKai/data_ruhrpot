@@ -204,7 +204,14 @@ def generate_article(opportunity: dict) -> dict:
 
     print(f"🤖 Generiere Artikel für: {opportunity['gruppe']}...")
 
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    # httpx-Versionskonflikt umgehen: eigenen httpx Client ohne 'proxies' übergeben
+    try:
+        import httpx
+        http_client = httpx.Client()
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, http_client=http_client)
+    except Exception:
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
     prompt = build_seo_prompt(opportunity)
 
     try:

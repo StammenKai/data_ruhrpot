@@ -28,6 +28,7 @@ import pandas as pd
 from datetime import date, datetime, timedelta
 from dotenv import load_dotenv
 from pathlib import Path
+from image_generator import create_social_images
 
 load_dotenv()
 
@@ -441,16 +442,18 @@ def main():
     print("🤖 Generiere Captions...")
     captions = generate_captions(article)
 
-    # 3. Bild laden
-    print("🖼  Bild vorbereiten...")
-    image_url = prepare_image(article)
+    # 3. Bilder generieren (DALL-E 3)
+    print("🎨 Generiere Bilder mit DALL-E 3...")
+    images = create_social_images(article)
+    feed_url  = images.get("feed_url")  or images.get("feed_path")
+    story_url = images.get("story_url") or images.get("story_path")
 
-    # 4. Instagram posten
+    # 4. Instagram posten (Feed-Bild)
     print("\n📸 Instagram...")
     ig_result = post_instagram(
         caption   = captions.get("instagram", ""),
         hashtags  = hashtags,
-        image_url = image_url,
+        image_url = feed_url,
     )
 
     time.sleep(3)
@@ -459,7 +462,7 @@ def main():
     print("👍 Facebook...")
     fb_result = post_facebook(
         caption   = captions.get("facebook", ""),
-        image_url = image_url,
+        image_url = feed_url,
         link      = article.get("wp_url"),
     )
 
