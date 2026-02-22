@@ -85,13 +85,16 @@ KEYWORD_GROUPS = {
 # ── Google Trends Abfrage ─────────────────────────────────────────────────────
 
 def init_pytrends() -> TrendReq:
-    """Verbindet sich mit Google Trends."""
+    """
+    Verbindet sich mit Google Trends.
+    Hinweis: retries & backoff_factor werden weggelassen –
+    diese nutzen intern urllib3's Retry() mit 'method_whitelist'
+    das in neueren Versionen umbenannt wurde und einen Fehler wirft.
+    """
     return TrendReq(
-        hl="de-DE",        # Sprache: Deutsch
-        tz=60,             # Zeitzone: MEZ (UTC+1)
-        timeout=(10, 25),  # Verbindungs- & Lesetimeout
-        retries=3,
-        backoff_factor=0.5,
+        hl="de-DE",
+        tz=60,
+        timeout=(10, 25),
     )
 
 
@@ -206,6 +209,16 @@ def score_affiliate_opportunities(results: list[dict]) -> pd.DataFrame:
             "keywords": ", ".join(r["keywords"]),
         })
     
+    if not rows:
+        print("  ⚠ Keine Trend-Daten verfügbar – erstelle leere Fallback-Datei")
+        df = pd.DataFrame(columns=[
+            "datum","gruppe","kategorie","trend","aktueller_wert",
+            "veraenderung_%","affiliate_score","empfohlene_partner","keywords"
+        ])
+        path = f"{OUTPUT_DIR}/affiliate_chancen_{today}.csv"
+        df.to_csv(path, index=False, encoding="utf-8-sig")
+        return df
+
     df = pd.DataFrame(rows).sort_values("affiliate_score", ascending=False)
     
     # Als CSV speichern

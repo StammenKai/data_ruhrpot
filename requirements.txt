@@ -16,6 +16,7 @@ seaborn==0.13.2
 
 # ── Google Trends ─────────────────────────────────
 pytrends==4.9.2
+urllib3==1.26.18     # Muss <2.0 sein – pytrends nutzt method_whitelist das in urllib3 2.x entfernt wurde
 
 # ── KI / APIs ─────────────────────────────────────
 anthropic==0.21.3
