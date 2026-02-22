@@ -1,0 +1,80 @@
+{
+  "top_keywords": [
+    {
+      "keyword": "E-Bike kaufen Ruhrgebiet",
+      "prioritaet": 9,
+      "suchvolumen_schaetzung": "mittel",
+      "affiliate_potenzial": "hoch",
+      "begruendung": "Konkurrenz zahlt für 'E-Bike kaufen' – lokale Variante kaum besetzt"
+    },
+    {
+      "keyword": "Fahrrad Werkzeug Set Test",
+      "prioritaet": 8,
+      "suchvolumen_schaetzung": "mittel",
+      "affiliate_potenzial": "hoch",
+      "begruendung": "Hohe Ads-Dichte zeigt Kaufabsicht"
+    },
+    {
+      "keyword": "Heimtrainer unter 500 Euro",
+      "prioritaet": 7,
+      "suchvolumen_schaetzung": "hoch",
+      "affiliate_potenzial": "hoch",
+      "begruendung": "Preisbasierte Keywords konvertieren sehr gut"
+    }
+  ],
+  "content_luecken": [
+    {
+      "keyword": "E-Bike Ruhrgebiet Tour",
+      "opportunity": "Ads vorhanden, kein organischer Artikel"
+    },
+    {
+      "keyword": "Gartengeräte Test NRW",
+      "opportunity": "Lokaler Bezug fehlt komplett im SERP"
+    }
+  ],
+  "artikel_ideen": [
+    {
+      "titel": "Die 7 besten E-Bikes für Touren im Ruhrgebiet (2026)",
+      "primary_keyword": "E-Bike kaufen Ruhrgebiet",
+      "secondary_keywords": [
+        "E-Bike Test 2026",
+        "E-Bike günstig NRW",
+        "Pedelec Ruhrgebiet",
+        "bestes E-Bike Empfehlung"
+      ],
+      "content_strategie": "Lokale Touren-Empfehlungen einbauen, konkrete Modelle mit Preisen",
+      "affiliate_partner": [
+        "Decathlon",
+        "Fahrrad.de",
+        "Amazon"
+      ],
+      "geschaetzte_wortanzahl": 1800
+    },
+    {
+      "titel": "Heimtrainer Test: Die besten Geräte unter 500€ im Vergleich",
+      "primary_keyword": "Heimtrainer unter 500 Euro",
+      "secondary_keywords": [
+        "Heimtrainer Test",
+        "bester Heimtrainer",
+        "Fahrradergometer kaufen"
+      ],
+      "content_strategie": "Vergleichstabelle, Pro/Contra je Gerät, klarer Kaufempfehlung",
+      "affiliate_partner": [
+        "Amazon",
+        "SportScheck"
+      ],
+      "geschaetzte_wortanzahl": 2000
+    }
+  ],
+  "lokale_keywords": [
+    "E-Bike kaufen Castrop-Rauxel",
+    "Fahrrad Reparatur Ruhrgebiet",
+    "Sportgeschäft NRW online",
+    "Gartenmarkt Ruhrgebiet"
+  ],
+  "meta": {
+    "analysiert_am": "2026-02-22",
+    "daten_qualitaet": "demo",
+    "empfehlung": "API-Key eintragen für echte Analyse"
+  }
+}
