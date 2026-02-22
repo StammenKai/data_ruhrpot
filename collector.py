@@ -60,60 +60,89 @@ OSM_TAGS = {
 }
 
 
-def fetch_osm_data(tag: str) -> list[dict]:
-    """Holt alle Nodes/Ways mit einem bestimmten Tag aus Castrop-Rauxel."""
+def fetch_osm_data_all() -> dict:
+    """
+    Holt ALLE Tags in einer einzigen Overpass-Anfrage.
+    Vorher: 4 separate Anfragen → 429 Rate-Limit
+    Jetzt:  1 kombinierte Anfrage → kein Rate-Limit
+    """
+    tag_union = "\n      ".join([
+        f"node(area.a)[{tag}]; way(area.a)[{tag}];"
+        for tag in OSM_TAGS.keys()
+    ])
     query = f"""
-    [out:json][timeout:30];
+    [out:json][timeout:60];
     area[name="{CITY}"]->.a;
     (
-      node(area.a)[{tag}];
-      way(area.a)[{tag}];
+      {tag_union}
     );
     out center tags;
     """
     try:
-        response = requests.post(OSM_OVERPASS_URL, data={"data": query}, timeout=40)
+        log.info("OSM: Starte kombinierte Abfrage (alle Tags in einer Anfrage)...")
+        response = requests.post(
+            OSM_OVERPASS_URL,
+            data={"data": query},
+            timeout=90,
+            headers={"User-Agent": "RuhrFinds-DataBot/1.0 (research; contact@ruhrfinds.de)"}
+        )
         response.raise_for_status()
         elements = response.json().get("elements", [])
-        log.info(f"OSM [{tag}]: {len(elements)} Einträge gefunden")
+        log.info(f"OSM: {len(elements)} Einträge gesamt gefunden")
         return elements
     except Exception as e:
-        log.error(f"OSM Fehler bei Tag '{tag}': {e}")
+        log.error(f"OSM Fehler: {e}")
         return []
 
 
-def parse_osm_elements(elements: list, category: str) -> list[dict]:
+def classify_element(el: dict) -> str:
+    """Ordnet ein OSM-Element der richtigen Kategorie zu."""
+    tags = el.get("tags", {})
+    for tag, label in OSM_TAGS.items():
+        if tag in tags:
+            return label
+    return "Sonstiges"
+
+
+def parse_osm_elements(elements: list) -> list[dict]:
     rows = []
     for el in elements:
-        tags = el.get("tags", {})
-        # Koordinaten (Node direkt, Way über center)
-        lat = el.get("lat") or el.get("center", {}).get("lat")
-        lon = el.get("lon") or el.get("center", {}).get("lon")
+        tags     = el.get("tags", {})
+        lat      = el.get("lat") or el.get("center", {}).get("lat")
+        lon      = el.get("lon") or el.get("center", {}).get("lon")
+        category = classify_element(el)
         rows.append({
-            "datum": today,
-            "kategorie": category,
-            "name": tags.get("name", "–"),
-            "typ": tags.get(category.split("/")[0].lower(), tags.get("amenity", "–")),
-            "strasse": tags.get("addr:street", ""),
-            "hausnummer": tags.get("addr:housenumber", ""),
-            "plz": tags.get("addr:postcode", ""),
-            "ort": tags.get("addr:city", CITY),
-            "lat": lat,
-            "lon": lon,
+            "datum":          today,
+            "kategorie":      category,
+            "name":           tags.get("name", "–"),
+            "typ":            tags.get("shop") or tags.get("amenity") or tags.get("leisure") or tags.get("tourism") or "–",
+            "strasse":        tags.get("addr:street", ""),
+            "hausnummer":     tags.get("addr:housenumber", ""),
+            "plz":            tags.get("addr:postcode", ""),
+            "ort":            tags.get("addr:city", CITY),
+            "lat":            lat,
+            "lon":            lon,
             "oeffnungszeiten": tags.get("opening_hours", ""),
-            "website": tags.get("website", tags.get("contact:website", "")),
-            "osm_id": el.get("id"),
-            "osm_typ": el.get("type"),
+            "website":        tags.get("website", tags.get("contact:website", "")),
+            "osm_id":         el.get("id"),
+            "osm_typ":        el.get("type"),
         })
     return rows
 
 
 def collect_osm() -> pd.DataFrame:
-    all_rows = []
-    for tag, label in OSM_TAGS.items():
-        elements = fetch_osm_data(tag)
-        all_rows.extend(parse_osm_elements(elements, label))
+    import time
+    # Kurz warten damit vorherige Requests abgeklungen sind
+    time.sleep(5)
+    elements = fetch_osm_data_all()
+    all_rows = parse_osm_elements(elements)
+
+    # Kategorie-Statistik loggen
     df = pd.DataFrame(all_rows)
+    if not df.empty:
+        for cat, count in df["kategorie"].value_counts().items():
+            log.info(f"  OSM [{cat}]: {count} Einträge")
+
     path = f"{OUTPUT_DIR}/osm_{today}.csv"
     df.to_csv(path, index=False, encoding="utf-8-sig")
     log.info(f"OSM Daten gespeichert: {path} ({len(df)} Einträge)")
@@ -219,7 +248,11 @@ def collect_population() -> pd.DataFrame:
 def upload_to_sheets(df: pd.DataFrame, sheet_name: str):
     """Lädt einen DataFrame in ein Google Sheet hoch."""
     if not GOOGLE_SHEET_ID:
-        log.info(f"Kein GOOGLE_SHEET_ID gesetzt – überspringe Upload für '{sheet_name}'")
+        log.info(f"Google Sheets nicht konfiguriert – überspringe '{sheet_name}'")
+        return
+
+    if not os.path.exists(GOOGLE_CREDENTIALS_PATH):
+        log.info(f"credentials.json nicht gefunden – überspringe Sheets Upload")
         return
 
     try:
