@@ -25,7 +25,7 @@ jobs:
         run: |
           pip install requests beautifulsoup4 gspread google-auth pandas \
                       matplotlib seaborn jinja2 pytrends anthropic python-dotenv \
-                      selenium webdriver-manager
+                      selenium webdriver-manager openai pillow
 
       - name: Daten sammeln (OSM + Events)
         env:
@@ -56,11 +56,14 @@ jobs:
       - name: Social Media veröffentlichen (Instagram & Facebook)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           META_IG_ACCOUNT_ID: ${{ secrets.META_IG_ACCOUNT_ID }}
           META_FB_PAGE_ID: ${{ secrets.META_FB_PAGE_ID }}
           META_FB_PAGE_TOKEN: ${{ secrets.META_FB_PAGE_TOKEN }}
           WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
           DEFAULT_SOCIAL_IMAGE: ${{ secrets.DEFAULT_SOCIAL_IMAGE }}
         run: python social_publisher.py
 
