@@ -293,7 +293,7 @@ def generate_summary(df_osm: pd.DataFrame, df_events: pd.DataFrame, df_pop: pd.D
         "osm_gastronomie": len(df_osm[df_osm["kategorie"] == "Gastronomie/Service"]),
         "osm_freizeit": len(df_osm[df_osm["kategorie"] == "Freizeit"]),
         "events_gesamt": len(df_events),
-        "bevoelkerung_aktuell": df_pop[df_pop["jahr"] == 2023]["bevoelkerung"].values[0] if not df_pop.empty else "–",
+       "bevoelkerung_aktuell": int(df_pop[df_pop["jahr"] == 2023]["bevoelkerung"].values[0]) if not df_pop.empty else 0,
     }
 
     path = f"{OUTPUT_DIR}/summary_{today}.json"
