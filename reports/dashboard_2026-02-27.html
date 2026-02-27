@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castrop-Rauxel Dashboard – 2026-02-27</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          background: #f1f5f9; color: #1e293b; }
+  header { background: #1e3a5f; color: white; padding: 1.5rem 2rem;
+            display: flex; align-items: center; gap: 1rem; }
+  header h1 { font-size: 1.6rem; }
+  header p { font-size: 0.9rem; opacity: 0.7; margin-top: 0.2rem; }
+  .badge { background: #3b82f6; padding: 0.3rem 0.8rem; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600; }
+  main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+               gap: 1rem; margin-bottom: 2rem; }
+  .kpi { background: white; border-radius: 12px; padding: 1.5rem;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .kpi .label { font-size: 0.8rem; color: #64748b; text-transform: uppercase;
+                 letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+  .kpi .value { font-size: 2rem; font-weight: 700; color: #1e3a5f; }
+  .kpi .sub { font-size: 0.85rem; color: #64748b; margin-top: 0.2rem; }
+  .section { background: white; border-radius: 12px; padding: 1.5rem;
+              box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 1.5rem; }
+  .section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;
+                 color: #1e3a5f; border-bottom: 2px solid #e2e8f0;
+                 padding-bottom: 0.5rem; }
+  .plots { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 1rem; margin-bottom: 1.5rem; }
+  .plot-card { background: white; border-radius: 12px; padding: 1rem;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .plot-card img { width: 100%; border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: #f8fafc; padding: 0.6rem 0.8rem; text-align: left;
+        font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #f1f5f9; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+          font-size: 0.75rem; font-weight: 600; }
+  .tag-shop { background: #dbeafe; color: #1d4ed8; }
+  .tag-food { background: #d1fae5; color: #065f46; }
+  .tag-lei { background: #fef3c7; color: #92400e; }
+  footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>📊 Castrop-Rauxel Daten-Dashboard</h1>
+    <p>Automatisch generiert am 2026-02-27 · Quellen: OSM, IT.NRW, Stadtwebsite</p>
+  </div>
+  <span class="badge">Kostenlos</span>
+</header>
+<main>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Einwohner (2023)</div>
+      <div class="value">71.500</div>
+      <div class="sub">↓ -0,6% ggü. Vorjahr</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Einrichtungen (OSM)</div>
+      <div class="value">1956</div>
+      <div class="sub">Läden, Gastronomie, Freizeit</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Events gescrapt</div>
+      <div class="value">12</div>
+      <div class="sub">Stadtwebsite heute</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Neu (letzte Änderung)</div>
+      <div class="value" style="color:#10b981">0</div>
+      <div class="sub">Neue Einrichtungen in OSM</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Geschlossen</div>
+      <div class="value" style="color:#ef4444">0</div>
+      <div class="sub">Aus OSM entfernt</div>
+    </div>
+  </div>
+
+  <div class="plots">
+    <div class="plot-card">
+      <h3 style="margin-bottom:0.5rem;font-size:0.95rem;color:#1e3a5f">Bevölkerungstrend</h3>
+      <img src="../reports/bevoelkerung_trend.png" alt="Bevölkerung">
+    </div>
+    <div class="plot-card">
+      <h3 style="margin-bottom:0.5rem;font-size:0.95rem;color:#1e3a5f">Einrichtungen nach Kategorie</h3>
+      <img src="../reports/osm_kategorien.png" alt="OSM Kategorien">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🏪 Aktuelle Einrichtungen (Top 50)</h2>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Kategorie</th><th>Typ</th><th>Adresse</th><th>Öffnungszeiten</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-lei">Tourismus</span></td>
+              <td>information</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>pub</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-shop">Laden/Geschäft</span></td>
+              <td>kiosk</td>
+              <td>Cottenburgstraße 68, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Postbank</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bank</td>
+              <td>Lönsstraße 20, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo-Fr 09:30-18:00; Sa 10:00-13:00; PH,Su off</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>HEM</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>fuel</td>
+              <td>Herner Straße nan, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Swabedo</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>kindergarten</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Ringstraße 25, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Aral</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>fuel</td>
+              <td>Wittener Straße 95, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Dortmunder Straße 185, 44577</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Altes Rathaus</strong></td>
+              <td><span class="tag tag-lei">Tourismus</span></td>
+              <td>attraction</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Targobank</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bank</td>
+              <td>Am Markt 24 - 25, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo-Fr 10:00-13:00, Mo,Tu,Th 14:00-18:00; PH,Su off</td>
+            </tr><tr>
+              <td><strong>Sparkasse Vest</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bank</td>
+              <td>Am Markt 13, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo-Fr 09:00-12:30; PH,Sa,Su off, Mo 14:00-16:00, Th 14:00-18:00</td>
+            </tr><tr>
+              <td><strong>Haus Daun</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>restaurant</td>
+              <td>Bochumer Straße 266, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo-Su,PH 13:00-21:00</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bench</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>waste_basket</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bench</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Erinpark/Starterzentrum</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>toilets</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Katholischer Kindergarten St. Marien Merklinde</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>kindergarten</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Grundschule Deininghausen</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>parking</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Am Markt 17, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Cafe Extrablatt</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>cafe</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Altstadtapotheke</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>pharmacy</td>
+              <td>Am Markt 18, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo,Tu,Th,Fr 08:00-18:30; Sa 09:00-13:00; We 08:00-13:00; PH,Su off</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Harkortstraße 2, 44577</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Auf der Flur nan, 44581</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>St. Marien</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>place_of_worship</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Naxos Grill Restaurant</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>fast_food</td>
+              <td>Wittener Straße 348, 44577</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>Chemische Reinigung Kalhöfer</strong></td>
+              <td><span class="tag tag-shop">Laden/Geschäft</span></td>
+              <td>dry_cleaning</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">Mo-We,Fr 08:00-15:00, Th 08:00-18:00</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>recycling</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Lange Straße 90, 44579</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>Bochumer Straße 273, 44575</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>post_box</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-food">Gastronomie/Service</span></td>
+              <td>bench</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr><tr>
+              <td><strong>–</strong></td>
+              <td><span class="tag tag-shop">Laden/Geschäft</span></td>
+              <td>kiosk</td>
+              <td>nan nan, nan</td>
+              <td style="font-size:0.75rem;color:#64748b">nan</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>📅 Aktuelle Veranstaltungen</h2>
+    <table>
+      <thead>
+        <tr><th>Titel</th><th>Datum</th><th>Ort</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+              <td><strong>ServiceBürgerservice A-ZServiceportalBürgerbüroIdeen- und MängelmelderNotdienste</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/service/buergerservice-z" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>Meine StadtStadtinformationÜbersichtWissenswertesÜbersichtStadtgeschichteStatist</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/stadtinformation/stadtinformation" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>StadtinformationÜbersichtWissenswertesÜbersichtStadtgeschichteStatistikWappen un</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/stadtinformation/stadtinformation" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>WissenswertesÜbersichtStadtgeschichteStatistikWappen und StadtnameEhrenbürger</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/wissenswertes/wissenswertes" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>TourismusÜbersichtVeranstaltungenStadtporträtSehenswertesGeoportal</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/tourismus/tourismus" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>StadtentwicklungÜbersichtEntwicklung der StadtteileÜbersichtISEK MerklindeISEK S</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/stadtentwicklung" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>Entwicklung der StadtteileÜbersichtISEK MerklindeISEK StadtmittelpunktSpiel-, Sp</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/entwicklung-der-stadtteile/entwicklung-der-stadtteile" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>Spiel-, Sport- und Bewegungspark am Hallenbad</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/entwicklung-der-stadtteile/spiel-sport-und-bewegungspark-am-hallenbad" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>Zukunftsfähige Innenstädte und Ortstzentren</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/entwicklung-der-stadtteile/zukunftsfaehige-innenstaedte-und-ortstzentren" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>MobilitätÜbersichtNahmobilitätskonzeptMitarbeit beim Nahverkehrsplan</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/mobilitaet/mobilitaet" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>Kultur und FreizeitÜbersichtVeranstaltungenÜbersichtVeranstaltungskalenderKirmes</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/kultur-und-freizeit/kultur-und-freizeit" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr><tr>
+              <td><strong>VeranstaltungenÜbersichtVeranstaltungskalenderKirmesWochenmärkteMittelaltermarkt</strong></td>
+              <td>nan</td>
+              <td>Castrop-Rauxel</td>
+              <td><a href="https://www.castrop-rauxel.de/tourismus/veranstaltungen" target="_blank" style="color:#3b82f6">→ Link</a></td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+<footer>Daten: OpenStreetMap (ODbL), IT.NRW, Bertelsmann Stiftung, Stadt Castrop-Rauxel · 
+Generiert mit Python · Für Forschungs- und Analysezwecke</footer>
+</body>
+</html>
