@@ -86,5 +86,16 @@
     "wp_url": "https://ruhrfinds.de/?p=77",
     "wp_status": "draft",
     "lokal": null
+  },
+  {
+    "datum": "2026-03-01",
+    "titel": "Mode & Lifestyle – Tipps für das Ruhrgebiet",
+    "gruppe": "Mode & Lifestyle",
+    "wortanzahl": 1347,
+    "tokens": 4000,
+    "wp_id": 78,
+    "wp_url": "https://ruhrfinds.de/?p=78",
+    "wp_status": "draft",
+    "lokal": null
   }
 ]
