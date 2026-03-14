@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-03-12 → 2026-03-14",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Tool of Time",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Ringstraße",
+      "hausnummer": "13"
+    }
+  ],
+  "geschlossen": []
+}
