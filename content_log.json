@@ -449,5 +449,16 @@
     "wp_url": "https://ruhrfinds.de/?p=110",
     "wp_status": "draft",
     "lokal": null
+  },
+  {
+    "datum": "2026-04-06",
+    "titel": "Heimwerken & Garten – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Heimwerken & Garten",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": 111,
+    "wp_url": "https://ruhrfinds.de/?p=111",
+    "wp_status": "draft",
+    "lokal": null
   }
 ]
