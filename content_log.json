@@ -548,5 +548,16 @@
     "wp_url": "https://ruhrfinds.de/?p=119",
     "wp_status": "draft",
     "lokal": null
+  },
+  {
+    "datum": "2026-04-16",
+    "titel": "Fahrrad & Outdoor – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Fahrrad & Outdoor",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": 120,
+    "wp_url": "https://ruhrfinds.de/?p=120",
+    "wp_status": "draft",
+    "lokal": null
   }
 ]
