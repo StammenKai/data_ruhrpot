@@ -1,0 +1,27 @@
+{
+  "zeitraum": "2026-04-17 → 2026-04-18",
+  "neu_anzahl": 2,
+  "geschlossen_anzahl": 1,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Delic",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "Konditorei Cafe Residenz",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
