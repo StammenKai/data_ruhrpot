@@ -603,5 +603,16 @@
     "wp_url": "https://ruhrfinds.de/?p=124",
     "wp_status": "draft",
     "lokal": null
+  },
+  {
+    "datum": "2026-04-21",
+    "titel": "Elektronik & Technik – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Elektronik & Technik",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": 125,
+    "wp_url": "https://ruhrfinds.de/?p=125",
+    "wp_status": "draft",
+    "lokal": null
   }
 ]
