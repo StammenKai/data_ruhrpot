@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-05-09 → 2026-05-14",
+  "neu_anzahl": 0,
+  "geschlossen_anzahl": 1,
+  "neu": [],
+  "geschlossen": [
+    {
+      "name": "Fritz Formel",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Wittener Straße",
+      "hausnummer": "407"
+    }
+  ]
+}
