@@ -1,0 +1,26 @@
+{
+  "zeitraum": "2026-05-19 → 2026-05-21",
+  "neu_anzahl": 3,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
