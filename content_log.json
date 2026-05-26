@@ -834,5 +834,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-05-25_Fahrrad_&_Outdoor.html"
+  },
+  {
+    "datum": "2026-05-26",
+    "titel": "Fahrrad & Outdoor – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Fahrrad & Outdoor",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-05-26_Fahrrad_&_Outdoor.html"
   }
 ]
