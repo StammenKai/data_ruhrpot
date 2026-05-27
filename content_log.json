@@ -845,5 +845,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-05-26_Fahrrad_&_Outdoor.html"
+  },
+  {
+    "datum": "2026-05-27",
+    "titel": "Gesundheit & Fitness – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Gesundheit & Fitness",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-05-27_Gesundheit_&_Fitness.html"
   }
 ]
