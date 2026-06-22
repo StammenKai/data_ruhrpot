@@ -1065,5 +1065,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-06-21_Elektronik_&_Technik.html"
+  },
+  {
+    "datum": "2026-06-22",
+    "titel": "Gesundheit & Fitness – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Gesundheit & Fitness",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-06-22_Gesundheit_&_Fitness.html"
   }
 ]
