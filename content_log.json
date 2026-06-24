@@ -1087,5 +1087,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-06-23_Gesundheit_&_Fitness.html"
+  },
+  {
+    "datum": "2026-06-24",
+    "titel": "Elektronik & Technik – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Elektronik & Technik",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-06-24_Elektronik_&_Technik.html"
   }
 ]
