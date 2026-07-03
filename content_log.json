@@ -1164,5 +1164,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-07-02_Elektronik_&_Technik.html"
+  },
+  {
+    "datum": "2026-07-03",
+    "titel": "Elektronik & Technik – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Elektronik & Technik",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-07-03_Elektronik_&_Technik.html"
   }
 ]
