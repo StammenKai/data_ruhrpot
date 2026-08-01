@@ -1,0 +1,32 @@
+{
+  "zeitraum": "2026-07-28 → 2026-08-01",
+  "neu_anzahl": 4,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "WERA Castrop",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
