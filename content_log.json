@@ -1417,5 +1417,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-08-09_Fahrrad_&_Outdoor.html"
+  },
+  {
+    "datum": "2026-08-10",
+    "titel": "Familie & Kinder – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Familie & Kinder",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-08-10_Familie_&_Kinder.html"
   }
 ]
