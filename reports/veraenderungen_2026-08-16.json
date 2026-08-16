@@ -1,0 +1,69 @@
+{
+  "zeitraum": "2026-08-15 → 2026-08-16",
+  "neu_anzahl": 7,
+  "geschlossen_anzahl": 3,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "OIL!",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Herner Straße",
+      "hausnummer": "114"
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "IMO Car Wash",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Lidl",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Herner Straße",
+      "hausnummer": "151"
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "LIDL",
+      "kategorie": "Laden/Geschäft",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Eller Montan",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Herner Straße",
+      "hausnummer": "114"
+    },
+    {
+      "name": "Lidl",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Westring",
+      "hausnummer": "206"
+    }
+  ]
+}
