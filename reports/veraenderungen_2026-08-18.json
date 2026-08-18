@@ -1,0 +1,68 @@
+{
+  "zeitraum": "2026-08-17 → 2026-08-18",
+  "neu_anzahl": 10,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Cafe Frosch",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Holderweg",
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
