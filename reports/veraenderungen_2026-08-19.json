@@ -1,0 +1,81 @@
+{
+  "zeitraum": "2026-08-18 → 2026-08-19",
+  "neu_anzahl": 10,
+  "geschlossen_anzahl": 2,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Tourismus",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Westhofenstraße",
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Dortmunder Straße",
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Eibenweg",
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "Grillhaus",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Dortmunder Straße",
+      "hausnummer": "138a"
+    },
+    {
+      "name": "Grobe",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Dortmunder Straße",
+      "hausnummer": "146"
+    }
+  ]
+}
