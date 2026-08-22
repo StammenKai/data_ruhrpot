@@ -1527,5 +1527,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-08-21_Familie_&_Kinder.html"
+  },
+  {
+    "datum": "2026-08-22",
+    "titel": "Familie & Kinder – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Familie & Kinder",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-08-22_Familie_&_Kinder.html"
   }
 ]
