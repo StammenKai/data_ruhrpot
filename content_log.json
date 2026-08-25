@@ -1560,5 +1560,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-08-24_Elektronik_&_Technik.html"
+  },
+  {
+    "datum": "2026-08-25",
+    "titel": "Mode & Lifestyle – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Mode & Lifestyle",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-08-25_Mode_&_Lifestyle.html"
   }
 ]
