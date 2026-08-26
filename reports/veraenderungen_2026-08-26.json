@@ -1,0 +1,81 @@
+{
+  "zeitraum": "2026-08-25 → 2026-08-26",
+  "neu_anzahl": 11,
+  "geschlossen_anzahl": 1,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Tourismus",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Schloss Bladenhorst",
+      "kategorie": "Tourismus",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Wasserleben",
+      "kategorie": "Tourismus",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Lehrerparkplatz",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Gemüsebeet",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
