@@ -1,0 +1,20 @@
+{
+  "zeitraum": "2026-08-27 → 2026-08-28",
+  "neu_anzahl": 2,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
