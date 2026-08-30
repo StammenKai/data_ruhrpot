@@ -1615,5 +1615,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-08-29_Elektronik_&_Technik.html"
+  },
+  {
+    "datum": "2026-08-30",
+    "titel": "Familie & Kinder – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Familie & Kinder",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-08-30_Familie_&_Kinder.html"
   }
 ]
