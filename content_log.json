@@ -1648,5 +1648,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-09-02_Mode_&_Lifestyle.html"
+  },
+  {
+    "datum": "2026-09-03",
+    "titel": "Mode & Lifestyle – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Mode & Lifestyle",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-09-03_Mode_&_Lifestyle.html"
   }
 ]
