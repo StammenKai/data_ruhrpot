@@ -1659,5 +1659,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-09-03_Mode_&_Lifestyle.html"
+  },
+  {
+    "datum": "2026-09-04",
+    "titel": "Familie & Kinder – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Familie & Kinder",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-09-04_Familie_&_Kinder.html"
   }
 ]

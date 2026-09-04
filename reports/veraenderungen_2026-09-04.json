@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-09-03 → 2026-09-04",
+  "neu_anzahl": 0,
+  "geschlossen_anzahl": 1,
+  "neu": [],
+  "geschlossen": [
+    {
+      "name": "Cottenburgschule",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
