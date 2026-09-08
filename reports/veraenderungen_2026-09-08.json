@@ -1,0 +1,20 @@
+{
+  "zeitraum": "2026-09-07 → 2026-09-08",
+  "neu_anzahl": 2,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Schulgarten asg",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
