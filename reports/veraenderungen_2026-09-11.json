@@ -1,0 +1,21 @@
+{
+  "zeitraum": "2026-09-10 → 2026-09-11",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 1,
+  "neu": [
+    {
+      "name": "Begegnungszentrum Harkortschule Merklinde",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Wittener Straße",
+      "hausnummer": "332b"
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "Friedrich-Harkort-Schule Grundschule",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
