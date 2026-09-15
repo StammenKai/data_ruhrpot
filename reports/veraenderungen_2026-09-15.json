@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-09-13 → 2026-09-15",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Casdor Baustoffe GmbH",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Wittener Straße",
+      "hausnummer": "407"
+    }
+  ],
+  "geschlossen": []
+}
