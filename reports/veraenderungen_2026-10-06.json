@@ -1,0 +1,51 @@
+{
+  "zeitraum": "2026-09-23 → 2026-10-06",
+  "neu_anzahl": 5,
+  "geschlossen_anzahl": 2,
+  "neu": [
+    {
+      "name": "Kleeblatt Apotheke",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Widumer Tor",
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "–",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Regenrückhaltebecken Westfalenstraße",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": [
+    {
+      "name": "Elternhaus Garage",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Eckenerstraße",
+      "hausnummer": "64"
+    },
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
