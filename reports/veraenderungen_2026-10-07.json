@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-10-06 → 2026-10-07",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Metropolrad Ruhr Am Markt",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
