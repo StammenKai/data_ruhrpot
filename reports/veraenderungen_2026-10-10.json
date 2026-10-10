@@ -1,0 +1,20 @@
+{
+  "zeitraum": "2026-10-08 → 2026-10-10",
+  "neu_anzahl": 2,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Evil Toys",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Von-Hofmann-Straße",
+      "hausnummer": "3c"
+    },
+    {
+      "name": "mve Autoteile",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Rütgersstraße",
+      "hausnummer": "15"
+    }
+  ],
+  "geschlossen": []
+}
