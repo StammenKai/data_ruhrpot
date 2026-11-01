@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-10-31 → 2026-11-01",
+  "neu_anzahl": 0,
+  "geschlossen_anzahl": 1,
+  "neu": [],
+  "geschlossen": [
+    {
+      "name": "–",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
