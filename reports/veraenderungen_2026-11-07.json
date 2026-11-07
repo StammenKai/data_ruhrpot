@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-11-06 → 2026-11-07",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Testzentrum Castrop-Rauxel",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Am Markt",
+      "hausnummer": "18"
+    }
+  ],
+  "geschlossen": []
+}
