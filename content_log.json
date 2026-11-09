@@ -2209,5 +2209,16 @@
     "wp_url": null,
     "wp_status": "lokal_gespeichert",
     "lokal": "reports/artikel_2026-11-08_Familie_&_Kinder.html"
+  },
+  {
+    "datum": "2026-11-09",
+    "titel": "Elektronik & Technik – Tipps & Empfehlungen für das Ruhrgebiet",
+    "gruppe": "Elektronik & Technik",
+    "wortanzahl": 0,
+    "tokens": 0,
+    "wp_id": null,
+    "wp_url": null,
+    "wp_status": "lokal_gespeichert",
+    "lokal": "reports/artikel_2026-11-09_Elektronik_&_Technik.html"
   }
 ]
