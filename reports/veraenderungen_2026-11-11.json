@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-11-10 → 2026-11-11",
+  "neu_anzahl": 1,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "100% Surf",
+      "kategorie": "Laden/Geschäft",
+      "strasse": "Industriestraße",
+      "hausnummer": "10"
+    }
+  ],
+  "geschlossen": []
+}
