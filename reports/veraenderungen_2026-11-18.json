@@ -1,0 +1,14 @@
+{
+  "zeitraum": "2026-11-17 → 2026-11-18",
+  "neu_anzahl": 0,
+  "geschlossen_anzahl": 1,
+  "neu": [],
+  "geschlossen": [
+    {
+      "name": "Getränke & Kiosk",
+      "kategorie": "Laden/Geschäft",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ]
+}
