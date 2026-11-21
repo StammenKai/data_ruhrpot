@@ -1,0 +1,20 @@
+{
+  "zeitraum": "2026-11-19 → 2026-11-21",
+  "neu_anzahl": 2,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Honigwabe",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Kinder- und Jugendzentrum Trafo",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "In der Wanne",
+      "hausnummer": "102"
+    }
+  ],
+  "geschlossen": []
+}
