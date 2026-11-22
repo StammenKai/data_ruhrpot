@@ -1,0 +1,50 @@
+{
+  "zeitraum": "2026-11-21 → 2026-11-22",
+  "neu_anzahl": 7,
+  "geschlossen_anzahl": 0,
+  "neu": [
+    {
+      "name": "Adalbert Stifter Gymnasium Sporthalle",
+      "kategorie": "Freizeit",
+      "strasse": "Schillerstaße",
+      "hausnummer": "7"
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Aula",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Leonhardstraße",
+      "hausnummer": "6"
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Anbau für Nachmittagsbetreuung und Schreinerei",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Viktoriastraße",
+      "hausnummer": "28"
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Abteilung zur Naturwissenschaftsbildung",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Leonhardstraße",
+      "hausnummer": "8"
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Hauptgebäude",
+      "kategorie": "Gastronomie/Service",
+      "strasse": "Leonhardstraße",
+      "hausnummer": "8"
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Sporthalle für Erprobungsstufe",
+      "kategorie": "Freizeit",
+      "strasse": NaN,
+      "hausnummer": NaN
+    },
+    {
+      "name": "Adalbert Stifter Gymnasium Gebäude für Erprobungsstufe",
+      "kategorie": "Gastronomie/Service",
+      "strasse": NaN,
+      "hausnummer": NaN
+    }
+  ],
+  "geschlossen": []
+}
